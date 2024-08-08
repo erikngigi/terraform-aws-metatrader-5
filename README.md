@@ -1,4 +1,3 @@
-```markdown
 # MetaTrader Architecture with Terraform
 
 This Terraform workspace provisions a MetaTrader architecture running on Wine in a Linux environment. It sets up the necessary network infrastructure, security configurations, and instances to support the MetaTrader application. 
@@ -131,4 +130,3 @@ This module is licensed under the MIT License. See the [LICENSE](LICENSE) file f
 ---
 
 Feel free to reach out with any questions or contributions. Happy Terraforming!
-```
