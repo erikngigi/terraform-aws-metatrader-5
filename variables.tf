@@ -34,22 +34,6 @@ variable "public_destination_route_cidr_block" {
   type        = string
 }
 
-# instances
-# variable "ami_id" {
-#   description = "ID of the Amazon Machine Image (AMI) used to launch the MetaTrader VPS instance, specifying the operating system and initial setup."
-#   type        = string
-# }
-
-# variable "instance_type" {
-#   description = "EC2 instance type for the MetaTrader VPS, determines the computational power and memory capacity."
-#   type        = string
-# }
-
-# variable "userdata_file" {
-#   description = "Path to the shell script. This script installs Wine on the MetaTrader VPS and performs any additional setup required during instance initialization."
-#   type        = string
-# }
-
 # security
 variable "allow_ssh" {
   description = "Boolean flag to enable or disable SSH access (port 22) to the MetaTrader VPS. Set to true to allow SSH connections for remote management."
@@ -94,4 +78,25 @@ variable "protocol" {
 variable "sg_cidr_block" {
   description = "The CIDR block(s) specifying the range of IP addresses allowed to access the specified port(s) on the instances."
   type        = list(string)
+}
+
+# instances
+variable "ami_id" {
+  description = "ID of the Amazon Machine Image (AMI) used to launch the MetaTrader VPS instance, specifying the operating system and initial setup."
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type for the MetaTrader VPS, determines the computational power and memory capacity."
+  type        = string
+}
+
+variable "instance_name_tag" {
+  description = "The name of the instance to be created."
+  type        = string
+}
+
+variable "userdata_file" {
+  description = "Path to the shell script. This script installs Wine on the MetaTrader VPS and performs any additional setup required during instance initialization."
+  type        = string
 }

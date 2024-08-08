@@ -23,3 +23,14 @@ module "security" {
   protocol            = var.protocol
   sg_cidr_block       = var.sg_cidr_block
 }
+
+module "instance" {
+  source            = "./modules/instances"
+  ami_id            = var.ami_id
+  instance_type     = var.instance_type
+  instance_name_tag = var.instance_name_tag
+  userdata_file     = var.userdata_file
+  security_group_id = module.security.metatrader_sg
+  ssh_key           = module.security.metatrader_key_pair
+  public_subnet_id  = module.networks.metatrader_public_subnet
+}
