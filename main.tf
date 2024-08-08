@@ -8,3 +8,7 @@ module "networks" {
   public_route_table_tag              = var.public_route_table_tag
   public_destination_route_cidr_block = var.public_destination_route_cidr_block
 }
+
+module "security" {
+  source = "./modules/security"
+}
