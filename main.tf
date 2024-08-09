@@ -16,10 +16,8 @@ module "security" {
   security_group_name = var.security_group_name
   vpc_cidr            = var.vpc_cidr
   vpc_id              = module.networks.metatrader_vpc_id
-  ingress_ssh_port    = var.ingress_ssh_port
-  ingress_rdp_port    = var.ingress_rdp_port
-  protocol            = var.protocol
-  sg_cidr_block       = var.sg_cidr_block
+  ingress             = var.ingress
+  egress              = var.egress
 }
 
 module "instance" {

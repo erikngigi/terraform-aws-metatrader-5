@@ -3,27 +3,26 @@ resource "aws_security_group" "metatrader_sg" {
   description = "Controls access to the Metatrader Instance"
   vpc_id      = var.vpc_id
 
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = -1
-    cidr_blocks = var.sg_cidr_block
+  dynamic "ingress" {
+    for_each = var.ingress
+    content {
+      description = ingress.value.description
+      from_port   = ingress.value.port
+      to_port     = ingress.value.port
+      protocol    = ingress.value.protocol
+      cidr_blocks = ingress.value.sg_cidr_block
+    }
   }
 
-  ingress {
-    description = "Allow SSH traffic to Metatrader Instance"
-    from_port   = var.ingress_ssh_port
-    to_port     = var.ingress_ssh_port
-    protocol    = var.protocol
-    cidr_blocks = var.sg_cidr_block
-  }
-
-  ingress {
-    description = "Allow RDP traffic to Metatrader Instance"
-    from_port   = var.ingress_rdp_port
-    to_port     = var.ingress_rdp_port
-    protocol    = var.protocol
-    cidr_blocks = var.sg_cidr_block
+  dynamic "egress" {
+    for_each = var.egress
+    content {
+      description = egress.value.description
+      from_port   = egress.value.port
+      to_port     = egress.value.port
+      protocol    = egress.value.protocol
+      cidr_blocks = egress.value.sg_cidr_block
+    }
   }
 
   tags = {

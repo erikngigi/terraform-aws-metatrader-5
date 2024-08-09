@@ -50,24 +50,22 @@ variable "ssh_key_name" {
   type        = string
 }
 
-variable "ingress_ssh_port" {
-  description = "The port number used for SSH access in the security group. Typically set to 22."
-  type        = number
+variable "ingress" {
+  type = map(object({
+    description   = string
+    port          = number
+    protocol      = string
+    sg_cidr_block = list(string)
+  }))
 }
 
-variable "ingress_rdp_port" {
-  description = "The port number used for RDP access in the security group. Typically set to 3389."
-  type        = number
-}
-
-variable "protocol" {
-  description = "The network protocol for the ingress rule. Common values include 'tcp' for TCP traffic, 'udp' for UDP traffic, and 'icmp' for ICMP traffic."
-  type        = string
-}
-
-variable "sg_cidr_block" {
-  description = "The CIDR block(s) specifying the range of IP addresses allowed to access the specified port(s) on the instances."
-  type        = list(string)
+variable "egress" {
+  type = map(object({
+    description   = string
+    port          = number
+    protocol      = number
+    sg_cidr_block = list(string)
+  }))
 }
 
 # instances
