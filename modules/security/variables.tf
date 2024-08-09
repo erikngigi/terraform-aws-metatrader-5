@@ -1,14 +1,4 @@
 # security
-variable "allow_ssh" {
-  description = "Boolean flag to enable or disable SSH access (port 22) to the MetaTrader VPS. Set to true to allow SSH connections for remote management."
-  type        = bool
-}
-
-variable "allow_rdp" {
-  description = "Boolean flag to enable or disable RDP access (port 3389) to the MetaTrader VPS. Set to true to allow RDP for managing the Windows-based MetaTrader application."
-  type        = bool
-}
-
 variable "ssh_key" {
   description = "Name of the SSH key pair used to log into the MetaTrader VPS. Ensure that the key pair exists in the AWS region where the instance is launched."
   type        = string

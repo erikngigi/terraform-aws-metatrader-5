@@ -11,8 +11,6 @@ module "networks" {
 
 module "security" {
   source              = "./modules/security"
-  allow_ssh           = var.allow_ssh
-  allow_rdp           = var.allow_rdp
   ssh_key             = var.ssh_key
   ssh_key_name        = var.ssh_key_name
   security_group_name = var.security_group_name
