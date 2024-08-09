@@ -51,6 +51,7 @@ variable "ssh_key_name" {
 }
 
 variable "ingress" {
+  description = "Dynamic block used to specify the Inbound security groups of the architecture"
   type = map(object({
     description   = string
     port          = number
@@ -60,6 +61,7 @@ variable "ingress" {
 }
 
 variable "egress" {
+  description = "Dynamic block used to specify the Outbound security groups of the architecture"
   type = map(object({
     description   = string
     port          = number
